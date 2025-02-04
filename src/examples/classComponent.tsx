@@ -10,8 +10,6 @@ type ComponentState = {
 }
 
 export class Greetings extends React.Component<ComponentProps> {
-
-
   UNSAFE_componentWillMount() {
     console.log('will mount')
   }
