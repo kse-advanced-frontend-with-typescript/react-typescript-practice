@@ -1,12 +1,12 @@
-import { useState} from "react";
+import {useEffect, useState} from "react";
 
 export const useCounter = (intervalMs: number): number => {
     const [ counter, setCounter ] = useState<number>(0);
-
-    setInterval(() => {
-        setCounter(counter + 1);
-    }, intervalMs)
-
+    useEffect(() => {
+        setTimeout(() => {
+            setCounter(counter + 1);
+        }, intervalMs)
+    }, [ counter ])
 
     return counter
 }
