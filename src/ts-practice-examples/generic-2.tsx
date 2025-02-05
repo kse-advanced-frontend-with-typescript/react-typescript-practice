@@ -28,11 +28,11 @@ function calculate(parameter: string) {
     return true;
 }
 
-function memo<F extends (...args: any[]) => any, P extends Parameters<F>>(fn: F): (...args: P) => ReturnType<F> {
-    const memoized = new Map<string, ReturnType<F>>();
+function memo(fn: any) {
+    const memoized = new Map<string, unknown>();
 
 
-    return (...args: P): ReturnType<F> => {
+    return (...args: any[]) => {
 
         const hash = args.join('|')
         const restoredData = memoized.get(hash)
