@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 
+const memoized = memo(calculate)
+
 export const List: React.FC = () => {
     const [result, setResult] = useState(false);
     const [time, setTime] = useState<string>(new Date().toUTCString());
@@ -7,7 +9,7 @@ export const List: React.FC = () => {
         setTimeout(() => {
             setTime(new Date().toUTCString())
         }, 1000)
-        const res = calculate()
+        const res = memoized()
         setResult(res as unknown as boolean)
     }, [time])
 
@@ -25,6 +27,20 @@ function calculate() {
     return true;
 }
 
-function memo(fn: (...args: unknown[]) => unknown) {
-    // to implement!
+function memo<F extends (...args: any[]) => any, P extends Parameters<F>>(fn: F): (...args: P) => ReturnType<F> {
+    const memoized = new Map<string, ReturnType<F>>();
+
+
+    return (...args: P): ReturnType<F> => {
+
+        const hash = args.join('|')
+        const restoredData = memoized.get(hash)
+        if (restoredData) {
+            return restoredData
+        }
+
+        const res =  fn(...args)
+        memoized.set(hash, res)
+        return res
+    }
 }
