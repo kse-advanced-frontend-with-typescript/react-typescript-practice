@@ -6,18 +6,30 @@ import {StateDemo} from "./examples/demo3";
 import {ComponentWithReducer} from "./examples/demo4";
 import {CounterWithUseMemo} from "./examples/demo5";
 import {CounterWithUseRef} from "./examples/demo6";
-import {Catalog} from "./examples/demo7";
+import {Catalog} from "./examples/demo7-8";
 
 export const App: React.FC = () => {
     const counter = useCounter(3000)
     return <div>
         {/*Example 1*/}
         {/*<Greetings name='Bob' tick={counter}  />*/}
+
+        {/*Example 2*/}
         {/*<GreetingsFn name='Bob' tick={counter}  />*/}
+
+        {/*Example 3*/}
         {/*<StateDemo />*/}
+
+        {/*Example 4*/}
         {/*<ComponentWithReducer />*/}
-        <CounterWithUseRef />
+
+        {/*Example 5*/}
+        {/*<CounterWithUseRef />*/}
+
+        {/*Example 6*/}
         {/*<CounterWithUseMemo />*/}
-        {/*<Catalog  />*/}
+
+        {/*Example 7 and 8*/}
+        <Catalog  />
     </div>;
 };
