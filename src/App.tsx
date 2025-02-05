@@ -9,6 +9,7 @@ import {CounterWithUseRef} from "./examples/demo6";
 import {Catalog} from "./examples/demo7-8";
 import {CatalogList} from "./ts-practice-examples/generic-1";
 import {List} from "./ts-practice-examples/generic-2";
+import {Banner, eventReporter} from "./ts-practice-examples/events";
 
 export const App: React.FC = () => {
     const counter = useCounter(3000)
@@ -38,6 +39,7 @@ export const App: React.FC = () => {
 
         {/*Practice*/}
         {/*<CatalogList />*/}
-        <List />
+        {/*<List />*/}
+        <Banner onClick={eventReporter} />
     </div>;
 };
