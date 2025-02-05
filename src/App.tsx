@@ -10,6 +10,13 @@ import {Catalog} from "./examples/demo7-8";
 import {CatalogList} from "./ts-practice-examples/generic-1";
 import {List} from "./ts-practice-examples/generic-2";
 import {Banner, eventReporter} from "./ts-practice-examples/events";
+import {UsePromise, UsePromiseWithSuspence} from "./examples/demo9";
+
+const promisify = new Promise<string>(resolve => {
+    setTimeout(() => {
+        resolve('Here is the data from the promise')
+    }, 5000)
+})
 
 export const App: React.FC = () => {
     const counter = useCounter(3000)
@@ -34,12 +41,13 @@ export const App: React.FC = () => {
 
         {/*Example 7 and 8*/}
         {/*<Catalog  />*/}
-
+        <UsePromise data={promisify} />
+        {/*<UsePromiseWithSuspence data={promisify} />*/}
 
 
         {/*Practice*/}
         {/*<CatalogList />*/}
         {/*<List />*/}
-        <Banner onClick={eventReporter} />
+        {/*<Banner onClick={eventReporter} />*/}
     </div>;
 };
