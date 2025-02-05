@@ -1,28 +1,20 @@
-import React, { useState, memo, useCallback } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 
-type Props = {
-    onClick: React.MouseEventHandler<HTMLButtonElement>
-}
+export const CounterWithUseMemo: React.FC = () => {
+    const [counter, setCounter] = useState(0)
 
-const Form: React.FC<Props> = ({ onClick }) => {
-    console.log('Form has been re-rendered')
-    return (
-        <div>
-            Form here <button onClick={onClick}>Click me!</button>
-        </div>
-    )
-}
+    const count = useMemo(() => {
+        for (let i = 0; i < 9999999999; ++i) {
+            // Some complex and long calculation is happening here
+        }
+        return 100
+    }, [])
 
-const FormWithMemo = memo(Form)
+    useEffect(() => {
+        setTimeout(() => {
+            setCounter(count + counter)
+        }, 1000)
+    }, [counter])
 
-export const Catalog: React.FC = () => {
-    const [val, setVal] = useState(0)
-    const rawClick = () => setVal(Date.now())
-    const onClick = useCallback(rawClick, [])
-    return (
-        <div>
-            {val}
-            <FormWithMemo onClick={onClick} />
-        </div>
-    )
+    return <div>Counter: {counter}</div>
 }
