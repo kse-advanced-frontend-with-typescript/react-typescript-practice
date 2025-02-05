@@ -9,8 +9,8 @@ export const List: React.FC = () => {
         setTimeout(() => {
             setTime(new Date().toUTCString())
         }, 1000)
-        const res = memoized()
-        setResult(res as unknown as boolean)
+        const res = memoized('10:00')
+        setResult(res)
     }, [time])
 
     return <div>
@@ -20,7 +20,8 @@ export const List: React.FC = () => {
 }
 
 
-function calculate() {
+function calculate(parameter: string) {
+    console.log(parameter)
     for (let i = 0; i < 3999999999; i++) {
         //
     }
