@@ -5,6 +5,7 @@ import {GreetingsFn} from "./examples/demo2";
 import {StateDemo} from "./examples/demo3";
 import {ComponentWithReducer} from "./examples/demo4";
 import {CounterWithUseMemo} from "./examples/demo5";
+import {CounterWithUseRef} from "./examples/demo6";
 import {Catalog} from "./examples/demo8";
 
 export const App: React.FC = () => {
@@ -15,7 +16,8 @@ export const App: React.FC = () => {
         {/*<GreetingsFn name='Bob' tick={counter}  />*/}
         {/*<StateDemo />*/}
         {/*<ComponentWithReducer />*/}
-        <CounterWithUseMemo />
+        <CounterWithUseRef />
+        {/*<CounterWithUseMemo />*/}
         {/*<Catalog  />*/}
     </div>;
 };
